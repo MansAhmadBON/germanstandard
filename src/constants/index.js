@@ -1,0 +1,5 @@
+const ADD_PLAYLIST = 'ADD_PLAYLIST';
+
+export {
+    ADD_PLAYLIST
+}
