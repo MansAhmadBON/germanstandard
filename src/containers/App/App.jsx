@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {addPlayList} from '../../store/actions';
 import * as playlistJSON from '../../playlist';
+import {Table, ToolsBar} from '../../components'
 
 class App extends Component{
     componentDidMount() {
@@ -11,9 +12,15 @@ class App extends Component{
     }
 
     render() {
+        //console.log(this.props.state);
+        const playlistForShow = this.props.state.slice(0, 3);
+
         return (
             <div>
-                App
+                <Table
+                    playlistForShow={playlistForShow}
+                />
+                <ToolsBar />
             </div>
         )
     }

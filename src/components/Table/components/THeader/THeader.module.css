@@ -1,0 +1,14 @@
+.wrapperTableHeader {
+    width: 100%;
+}
+.tableHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: lightgrey;
+}

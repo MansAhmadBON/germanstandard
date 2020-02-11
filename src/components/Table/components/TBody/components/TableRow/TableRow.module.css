@@ -1,0 +1,6 @@
+.tableRow {
+    justify-content: space-around;
+    border-bottom: 1px solid #000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
