@@ -1,10 +1,10 @@
 import {ADD_PLAYLIST} from '../../constants';
 
-function addPlayList(playlist) {
+function addPlayListAC(playlist) {
     return {
         type: ADD_PLAYLIST,
         payload: playlist
     }
 }
 
-export default addPlayList;
+export default addPlayListAC;

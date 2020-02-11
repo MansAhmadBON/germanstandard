@@ -1,7 +1,7 @@
 import {createStore} from "redux";
-import {reducerAddPlayList} from './reducers';
+import rootReducer from './reducers';
 
-const store = createStore(reducerAddPlayList);
+const store = createStore(rootReducer);
 
 //store.subscribe(() => console.log('Store subscribe:', store.getState()));
 

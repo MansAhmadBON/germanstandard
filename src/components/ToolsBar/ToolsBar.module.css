@@ -18,3 +18,16 @@
     height: 20px;
     margin-left: 10px;
 }
+
+.paginationItem {
+    padding: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.paginationItemActive {
+    padding: 5px;
+    margin-right: 5px;
+    color: red;
+    cursor: default;
+}

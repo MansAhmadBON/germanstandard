@@ -1,16 +1,27 @@
 import React from "react";
 import styles from './ToolsBar.module.css'
 
-function ToolsBar({firstItemShow, lastItemShow}) {
+function ToolsBar({firstItemShow, lastItemShow, setPageSize, pages, addCurrentPage, currentPage}) {
 
     const onChangeHandler = e => {
-        console.log(e.target.value)
+        setPageSize(Number(e.target.value));
+    };
+
+    const clickOnPaginationBox = item => {
+        //let pageNum = Number(e.target.className);
+        addCurrentPage(item);
     };
 
     return (
         <div className={styles.boxToolBar}>
-            <div>
-                controls
+            <div className={styles.paginationBox}>
+                {
+                    pages.map(item => {
+                        return (
+                            <span key={item} className={(currentPage === item) ? styles.paginationItemActive : styles.paginationItem} onClick={e => clickOnPaginationBox(item)}>{item}</span>
+                        )
+                    })
+                }
             </div>
             <div className={styles.boxSelect}>
                 <p>Table size</p>

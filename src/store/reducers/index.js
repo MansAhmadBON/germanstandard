@@ -1,5 +1,9 @@
 import reducerAddPlayList from "./reducerAddPlayList";
+import reducerTableSetting from "./reducerTableSetting";
 
-export {
-    reducerAddPlayList
-};
+import {combineReducers} from "redux";
+
+export default combineReducers({
+    playList: reducerAddPlayList,
+    tableSetting: reducerTableSetting
+})

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {addPlayList} from '../../store/actions';
+import {addPlayList, setPageSize, addTotalCountItems, addCurrentPage} from '../../store/actions';
 import * as playlistJSON from '../../playlist';
 import {Table, ToolsBar} from '../../components'
 
@@ -8,14 +8,19 @@ class App extends Component{
     componentDidMount() {
         const playlist = playlistJSON.default;
         this.props.addPlayList(playlist);
-
+        this.props.addTotalCountItems(playlist.length);
     }
 
     render() {
-        //console.log(this.props.state);
-        const firstItemShow = 0;
-        const lastItemShow = 3;
-        const playlistForShow = this.props.state.slice(firstItemShow, lastItemShow);
+        const firstItemShow = (this.props.currentPage - 1) * this.props.pageSize;
+        const lastItemShow = firstItemShow + this.props.pageSize;
+        const playlistForShow = this.props.playList.slice(firstItemShow, lastItemShow);
+
+        const totalCountPage = Math.ceil(this.props.totalCountItems / this.props.pageSize);
+        const pages = [];
+        for(let i = 1; i <= totalCountPage; i++){
+            pages.push(i)
+        }
 
         return (
             <div>
@@ -25,6 +30,10 @@ class App extends Component{
                 <ToolsBar
                     firstItemShow={firstItemShow + 1}
                     lastItemShow={lastItemShow}
+                    setPageSize={this.props.setPageSize}
+                    pages={pages}
+                    addCurrentPage={this.props.addCurrentPage}
+                    currentPage={this.props.currentPage}
                 />
             </div>
         )
@@ -33,13 +42,19 @@ class App extends Component{
 
 const mapStateToProps = state => {
     return {
-        state: state
+        playList: state.playList,
+        pageSize: state.tableSetting.pageSize,
+        totalCountItems: state.tableSetting.totalCountItems,
+        currentPage: state.tableSetting.currentPage
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addPlayList: newPlayList => dispatch(addPlayList(newPlayList))
+        addPlayList: newPlayList => dispatch(addPlayList(newPlayList)),
+        setPageSize: page => dispatch(setPageSize(page)),
+        addTotalCountItems: totalCount => dispatch(addTotalCountItems(totalCount)),
+        addCurrentPage: pageNum => dispatch(addCurrentPage(pageNum))
     }
 }
 
