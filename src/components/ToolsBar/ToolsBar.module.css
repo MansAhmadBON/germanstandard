@@ -1,0 +1,20 @@
+.boxToolBar {
+    max-width: 1124px;
+    width: 100%;
+    margin: 20px auto;
+    background-color: #a4a4a4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boxSelect {
+    display: flex;
+    align-items: center;
+}
+
+.sizeTableSelect {
+    width: 50px;
+    height: 20px;
+    margin-left: 10px;
+}

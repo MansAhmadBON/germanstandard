@@ -13,14 +13,19 @@ class App extends Component{
 
     render() {
         //console.log(this.props.state);
-        const playlistForShow = this.props.state.slice(0, 3);
+        const firstItemShow = 0;
+        const lastItemShow = 3;
+        const playlistForShow = this.props.state.slice(firstItemShow, lastItemShow);
 
         return (
             <div>
                 <Table
                     playlistForShow={playlistForShow}
                 />
-                <ToolsBar />
+                <ToolsBar
+                    firstItemShow={firstItemShow + 1}
+                    lastItemShow={lastItemShow}
+                />
             </div>
         )
     }
