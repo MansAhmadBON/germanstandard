@@ -8,7 +8,6 @@ function ToolsBar({firstItemShow, lastItemShow, setPageSize, pages, addCurrentPa
     };
 
     const clickOnPaginationBox = item => {
-        //let pageNum = Number(e.target.className);
         addCurrentPage(item);
     };
 

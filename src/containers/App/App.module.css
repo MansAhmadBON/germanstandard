@@ -1,0 +1,19 @@
+.appBox {
+    max-width: 1124px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.mainConent {
+    display: flex;
+}
+
+.filtrationSelectsBox {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 30px;
+    height: 200px;
+}

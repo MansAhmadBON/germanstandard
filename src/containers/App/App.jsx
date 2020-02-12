@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import {connect} from 'react-redux';
 import {addPlayList, setPageSize, addTotalCountItems, addCurrentPage} from '../../store/actions';
 import * as playlistJSON from '../../playlist';
-import {Table, ToolsBar} from '../../components'
+import {Table, ToolsBar, FiltrationSelect} from '../../components'
+import styles from './App.module.css';
 
 class App extends Component{
     componentDidMount() {
@@ -23,10 +24,17 @@ class App extends Component{
         }
 
         return (
-            <div>
-                <Table
-                    playlistForShow={playlistForShow}
-                />
+            <div className={styles.appBox}>
+                <main className={styles.mainConent}>
+                    <Table
+                        playlistForShow={playlistForShow}
+                    />
+                    <aside className={styles.filtrationSelectsBox}>
+                        <FiltrationSelect/>
+                        <FiltrationSelect/>
+                        <FiltrationSelect/>
+                    </aside>
+                </main>
                 <ToolsBar
                     firstItemShow={firstItemShow + 1}
                     lastItemShow={lastItemShow}
