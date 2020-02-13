@@ -38,9 +38,18 @@ class App extends Component{
                         playlistForShow={playlistForShow}
                     />
                     <aside className={styles.filtrationSelectsBox}>
-                        <FiltrationSelect/>
-                        <FiltrationSelect/>
-                        <FiltrationSelect/>
+                        <FiltrationSelect
+                            title={'Singer'}
+                            valueOptions={this.props.uniqueSingers}
+                        />
+                        <FiltrationSelect
+                            title={'Ganre'}
+                            valueOptions={this.props.uniqueSingers}
+                        />
+                        <FiltrationSelect
+                            title={'Year'}
+                            valueOptions={this.props.uniqueSingers}
+                        />
                     </aside>
                 </main>
                 <ToolsBar
@@ -61,7 +70,10 @@ const mapStateToProps = state => {
         playList: state.playList,
         pageSize: state.tableSetting.pageSize,
         totalCountItems: state.tableSetting.totalCountItems,
-        currentPage: state.tableSetting.currentPage
+        currentPage: state.tableSetting.currentPage,
+        uniqueSingers: state.formSetting.uniqueSingers,
+        uniqueGanre: state.formSetting.uniqueGanre,
+        uniqueYear: state.formSetting.uniqueYear,
     }
 }
 

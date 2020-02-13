@@ -2,10 +2,12 @@ import React from "react";
 import {Option} from './components';
 import styles from './Select.module.css'
 
-function Select(props) {
+function Select({valueOptions}) {
     return (
         <select className={styles.selectFilter}>
-            <Option />
+            <Option
+                valueOptions={valueOptions}
+            />
         </select>
     )
 }

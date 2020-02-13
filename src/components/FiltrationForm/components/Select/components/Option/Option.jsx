@@ -1,8 +1,17 @@
 import React from "react";
 
-function Option(props) {
+function Option({valueOptions}) {
     return (
-        <option>All</option>
+        <>
+            <option>All</option>
+            {
+                valueOptions.map((item, i) => {
+                    return (
+                        <option key={i}>{item}</option>
+                    )
+                })
+            }
+        </>
     )
 }
 
