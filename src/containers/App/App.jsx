@@ -1,8 +1,14 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
-import {addPlayList, setPageSize, addTotalCountItems, addCurrentPage} from '../../store/actions';
+import {
+    addPlayList,
+    setPageSize,
+    addTotalCountItems,
+    addCurrentPage,
+    addDataUniqueItems
+} from '../../store/actions';
 import * as playlistJSON from '../../playlist';
-import {Table, ToolsBar, FiltrationSelect} from '../../components'
+import {Table, ToolsBar, FiltrationSelect} from '../../components';
 import styles from './App.module.css';
 
 class App extends Component{
@@ -10,6 +16,8 @@ class App extends Component{
         const playlist = playlistJSON.default;
         this.props.addPlayList(playlist);
         this.props.addTotalCountItems(playlist.length);
+        //-----
+        this.props.addDataUniqueItems(playlist)
     }
 
     render() {
@@ -62,7 +70,8 @@ const mapDispatchToProps = dispatch => {
         addPlayList: newPlayList => dispatch(addPlayList(newPlayList)),
         setPageSize: page => dispatch(setPageSize(page)),
         addTotalCountItems: totalCount => dispatch(addTotalCountItems(totalCount)),
-        addCurrentPage: pageNum => dispatch(addCurrentPage(pageNum))
+        addCurrentPage: pageNum => dispatch(addCurrentPage(pageNum)),
+        addDataUniqueItems: items => dispatch(addDataUniqueItems(items))
     }
 }
 

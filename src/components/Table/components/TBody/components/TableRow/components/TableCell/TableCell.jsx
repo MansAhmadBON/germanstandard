@@ -1,5 +1,4 @@
 import React from "react";
-import styles from './TableCell.module.css'
 
 function TableCell({singer, song, ganre, year, id}) {
     return (
