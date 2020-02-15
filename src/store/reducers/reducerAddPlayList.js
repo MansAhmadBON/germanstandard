@@ -1,12 +1,85 @@
-import {ADD_PLAYLIST} from '../../constants';
+import {ADD_PLAYLIST, ADD_SELECT_VALUE, ADD_SELECT_GANRE_VALUE, ADD_SELECT_SINGER_VALUE, ADD_SELECT_YEAR_VALUE} from '../../constants';
 
-const initialState = [];
+const initialState = {
+    playlist: [],
+    playlistShow: [],
+    selectsValue: {
+        singer: '',
+        ganre: '',
+        year: ''
+    }
+};
+
+function filterPlaylist(playlist, selectsValue) {
+    const selectSinger = selectsValue.singer !== 'All' && selectsValue.singer;
+    const selectGanre = selectsValue.ganre !== 'All' && selectsValue.ganre;
+    const selectYear = selectsValue.year !== 'All' && selectsValue.year;
+
+    const selects = [selectSinger, selectGanre, selectYear].filter(item => item.length > 0);
+    const filterList = playlist.filter(item => {
+
+        if (selects.length === 3) {
+            return item.singer === selectSinger && item.ganre === selectGanre && item.year === selectYear
+        }
+
+        if (selects.length === 2) {
+            if (selectSinger && selectGanre) return item.singer === selectSinger && item.ganre === selectGanre;
+            if (selectSinger && selectYear) return item.singer === selectSinger && item.year === selectYear;
+            if (selectGanre && selectYear) return item.ganre === selectGanre && item.year === selectYear;
+        }
+
+        if (selects.length === 1) {
+            if (selectSinger) return item.singer === selectSinger;
+            if (selectGanre) return item.ganre === selectGanre;
+            if (selectYear) return item.year === selectYear;
+        }
+        return item
+    });
+    return (filterList.length !== 0) ? filterList : [];
+}
 
 function reducerAddPlayList(state = initialState, action) {
-    if(action.type === ADD_PLAYLIST){
-        return action.payload;
-    } else {
-        return state;
+    switch (action.type) {
+        case ADD_PLAYLIST:
+            return {
+                ...state,
+                playlist: action.payload,
+                playlistShow: action.payload
+            };
+        case ADD_SELECT_SINGER_VALUE:
+            let currentSelectsValueS = {
+                ...state.selectsValue,
+                singer: action.payload,
+            };
+            const filterListSinger = filterPlaylist(state.playlist, currentSelectsValueS);
+            return {
+                ...state,
+                selectsValue: currentSelectsValueS,
+                playlistShow: filterListSinger
+            };
+        case ADD_SELECT_GANRE_VALUE:
+            let currentSelectsValueG = {
+                ...state.selectsValue,
+                ganre: action.payload,
+            };
+            const filterListGanre = filterPlaylist(state.playlist, currentSelectsValueG);
+            return {
+                ...state,
+                selectsValue: currentSelectsValueG,
+                playlistShow: filterListGanre
+            };
+        case ADD_SELECT_YEAR_VALUE:
+            let currentSelectsValueY = {
+                ...state.selectsValue,
+                year: action.payload,
+            };
+            const filterListYear = filterPlaylist(state.playlist, currentSelectsValueY);
+            return {
+                ...state,
+                selectsValue: currentSelectsValueY,
+                playlistShow: filterListYear
+            };
+        default: return state;
     }
 }
 

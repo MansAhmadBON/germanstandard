@@ -5,7 +5,10 @@ import {
     setPageSize,
     addTotalCountItems,
     addCurrentPage,
-    addDataUniqueItems
+    addDataUniqueItems,
+    addSelectValueSinger,
+    addSelectValueGanre,
+    addSelectValueYEAR,
 } from '../../store/actions';
 import * as playlistJSON from '../../playlist';
 import {Table, ToolsBar, FiltrationSelect} from '../../components';
@@ -21,15 +24,18 @@ class App extends Component{
     }
 
     render() {
+        //console.log('selectsValue', this.props.selectsValue);
+
         const firstItemShow = (this.props.currentPage - 1) * this.props.pageSize;
         const lastItemShow = firstItemShow + this.props.pageSize;
-        const playlistForShow = this.props.playList.slice(firstItemShow, lastItemShow);
+        const playlistForShow = this.props.playlistSow.slice(firstItemShow, lastItemShow);
 
         const totalCountPage = Math.ceil(this.props.totalCountItems / this.props.pageSize);
         const pages = [];
         for(let i = 1; i <= totalCountPage; i++){
             pages.push(i)
         }
+
 
         return (
             <div className={styles.appBox}>
@@ -41,14 +47,17 @@ class App extends Component{
                         <FiltrationSelect
                             title={'Singer'}
                             valueOptions={this.props.uniqueSingers}
+                            addSelectValue={this.props.addSelectValueSinger}
                         />
                         <FiltrationSelect
                             title={'Ganre'}
-                            valueOptions={this.props.uniqueSingers}
+                            valueOptions={this.props.uniqueGanre}
+                            addSelectValue={this.props.addSelectValueGanre}
                         />
                         <FiltrationSelect
                             title={'Year'}
-                            valueOptions={this.props.uniqueSingers}
+                            valueOptions={this.props.uniqueYear}
+                            addSelectValue={this.props.addSelectValueYEAR}
                         />
                     </aside>
                 </main>
@@ -67,15 +76,17 @@ class App extends Component{
 
 const mapStateToProps = state => {
     return {
-        playList: state.playList,
+        playlistSow: state.playList.playlistShow,
+        playList: state.playList.playlist,
         pageSize: state.tableSetting.pageSize,
         totalCountItems: state.tableSetting.totalCountItems,
         currentPage: state.tableSetting.currentPage,
         uniqueSingers: state.formSetting.uniqueSingers,
         uniqueGanre: state.formSetting.uniqueGanre,
         uniqueYear: state.formSetting.uniqueYear,
+        selectsValue: state.playList.selectsValue
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -83,9 +94,12 @@ const mapDispatchToProps = dispatch => {
         setPageSize: page => dispatch(setPageSize(page)),
         addTotalCountItems: totalCount => dispatch(addTotalCountItems(totalCount)),
         addCurrentPage: pageNum => dispatch(addCurrentPage(pageNum)),
-        addDataUniqueItems: items => dispatch(addDataUniqueItems(items))
+        addDataUniqueItems: items => dispatch(addDataUniqueItems(items)),
+        addSelectValueSinger: value => dispatch(addSelectValueSinger(value)),
+        addSelectValueGanre: value => dispatch(addSelectValueGanre(value)),
+        addSelectValueYEAR: value => dispatch(addSelectValueYEAR(value)),
     }
-}
+};
 
 export default connect(
     mapStateToProps,
