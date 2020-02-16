@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './ToolsBar.module.css'
 
-function ToolsBar({firstItemShow, lastItemShow, setPageSize, pages, addCurrentPage, currentPage}) {
+function ToolsBar({setPageSize, pages, addCurrentPage, currentPage}) {
 
     const onChangeHandler = e => {
         setPageSize(Number(e.target.value));
@@ -29,9 +29,6 @@ function ToolsBar({firstItemShow, lastItemShow, setPageSize, pages, addCurrentPa
                     <option>5</option>
                     <option>10</option>
                 </select>
-            </div>
-            <div>
-                <span>{firstItemShow} - {lastItemShow}</span>
             </div>
         </div>
     )

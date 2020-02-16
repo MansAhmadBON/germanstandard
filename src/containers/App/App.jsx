@@ -22,11 +22,13 @@ class App extends Component{
     componentDidMount() {
         const playlist = playlistJSON.default;
         this.props.addPlayList(playlist);
-        this.props.addTotalCountItems(playlist.length);
+        //this.props.addTotalCountItems(playlist.length);
         this.props.addDataUniqueItems(playlist)
     }
 
     render() {
+        this.props.addTotalCountItems(this.props.playlistSow.length);
+
         const firstItemShow = (this.props.currentPage - 1) * this.props.pageSize;
         const lastItemShow = firstItemShow + this.props.pageSize;
         const playlistForShow = this.props.playlistSow.slice(firstItemShow, lastItemShow);
@@ -53,22 +55,26 @@ class App extends Component{
                             title={'Singer'}
                             valueOptions={this.props.uniqueSingers}
                             addSelectValue={this.props.addSelectValueSinger}
+                            setPageSize={this.props.setPageSize}
+                            pageSize={this.props.pageSize}
                         />
                         <FiltrationSelect
                             title={'Ganre'}
                             valueOptions={this.props.uniqueGanre}
                             addSelectValue={this.props.addSelectValueGanre}
+                            setPageSize={this.props.setPageSize}
+                            pageSize={this.props.pageSize}
                         />
                         <FiltrationSelect
                             title={'Year'}
                             valueOptions={this.props.uniqueYear}
                             addSelectValue={this.props.addSelectValueYEAR}
+                            setPageSize={this.props.setPageSize}
+                            pageSize={this.props.pageSize}
                         />
                     </aside>
                 </main>
                 <ToolsBar
-                    firstItemShow={firstItemShow + 1}
-                    lastItemShow={lastItemShow}
                     setPageSize={this.props.setPageSize}
                     pages={pages}
                     addCurrentPage={this.props.addCurrentPage}

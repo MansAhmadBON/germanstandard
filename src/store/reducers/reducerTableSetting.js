@@ -11,7 +11,8 @@ function reducerTableSetting(state = initialState, action) {
         case SET_PAGE_SIZE:
             return {
                 ...state,
-                pageSize: action.payload
+                pageSize: action.payload,
+                currentPage: 1
             };
         case ADD_TOTAL_COUNT:
             return {
