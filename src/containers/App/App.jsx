@@ -9,6 +9,10 @@ import {
     addSelectValueSinger,
     addSelectValueGanre,
     addSelectValueYEAR,
+    sortBySinger,
+    sortBySong,
+    sortByGanre,
+    sortByYear
 } from '../../store/actions';
 import * as playlistJSON from '../../playlist';
 import {Table, ToolsBar, FiltrationSelect} from '../../components';
@@ -19,13 +23,10 @@ class App extends Component{
         const playlist = playlistJSON.default;
         this.props.addPlayList(playlist);
         this.props.addTotalCountItems(playlist.length);
-        //-----
         this.props.addDataUniqueItems(playlist)
     }
 
     render() {
-        //console.log('selectsValue', this.props.selectsValue);
-
         const firstItemShow = (this.props.currentPage - 1) * this.props.pageSize;
         const lastItemShow = firstItemShow + this.props.pageSize;
         const playlistForShow = this.props.playlistSow.slice(firstItemShow, lastItemShow);
@@ -42,6 +43,10 @@ class App extends Component{
                 <main className={styles.mainConent}>
                     <Table
                         playlistForShow={playlistForShow}
+                        sortBySinger={this.props.sortBySinger}
+                        sortBySong={this.props.sortBySong}
+                        sortByGanre={this.props.sortByGanre}
+                        sortByYear={this.props.sortByYear}
                     />
                     <aside className={styles.filtrationSelectsBox}>
                         <FiltrationSelect
@@ -98,6 +103,10 @@ const mapDispatchToProps = dispatch => {
         addSelectValueSinger: value => dispatch(addSelectValueSinger(value)),
         addSelectValueGanre: value => dispatch(addSelectValueGanre(value)),
         addSelectValueYEAR: value => dispatch(addSelectValueYEAR(value)),
+        sortBySinger: () => dispatch(sortBySinger()),
+        sortBySong: () => dispatch(sortBySong()),
+        sortByGanre: () => dispatch(sortByGanre()),
+        sortByYear: () => dispatch(sortByYear()),
     }
 };
 

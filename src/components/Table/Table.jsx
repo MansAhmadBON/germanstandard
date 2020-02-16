@@ -2,10 +2,15 @@ import React from "react";
 import styles from './Table.module.css'
 import {THeader, TBody} from './components';
 
-function Table({playlistForShow}) {
+function Table({playlistForShow, sortBySinger, sortBySong, sortByGanre, sortByYear}) {
     return (
         <table className={styles.table}>
-            <THeader />
+            <THeader
+                sortBySinger={sortBySinger}
+                sortBySong={sortBySong}
+                sortByGanre={sortByGanre}
+                sortByYear={sortByYear}
+            />
             <TBody
                 playlistForShow={playlistForShow}
             />

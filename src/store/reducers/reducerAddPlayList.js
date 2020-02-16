@@ -1,4 +1,13 @@
-import {ADD_PLAYLIST, ADD_SELECT_VALUE, ADD_SELECT_GANRE_VALUE, ADD_SELECT_SINGER_VALUE, ADD_SELECT_YEAR_VALUE} from '../../constants';
+import {
+    ADD_PLAYLIST,
+    ADD_SELECT_GANRE_VALUE,
+    ADD_SELECT_SINGER_VALUE,
+    ADD_SELECT_YEAR_VALUE,
+    SORT_BY_SINGER,
+    SORT_BY_SONG,
+    SORT_BY_GANRE,
+    SORT_BY_YEAR
+} from '../../constants';
 
 const initialState = {
     playlist: [],
@@ -78,6 +87,30 @@ function reducerAddPlayList(state = initialState, action) {
                 ...state,
                 selectsValue: currentSelectsValueY,
                 playlistShow: filterListYear
+            };
+        case SORT_BY_SINGER:
+            const sortPlaylistBySinger = state.playlistShow.sort((a, b) => a.singer < b.singer ? -1 : 1);
+            return {
+                ...state,
+                playlistShow: [...sortPlaylistBySinger]
+            };
+        case SORT_BY_SONG:
+            const sortPlaylistBySong = state.playlistShow.sort((a, b) => a.song < b.song ? -1 : 1);
+            return {
+                ...state,
+                playlistShow: [...sortPlaylistBySong]
+            };
+        case SORT_BY_GANRE:
+            const sortPlaylistByGanre = state.playlistShow.sort((a, b) => a.ganre < b.ganre ? -1 : 1);
+            return {
+                ...state,
+                playlistShow: [...sortPlaylistByGanre]
+            };
+        case SORT_BY_YEAR:
+            const sortPlaylistByYear = state.playlistShow.sort((a, b) => a.year > b.year ? -1 : 1);
+            return {
+                ...state,
+                playlistShow: [...sortPlaylistByYear]
             };
         default: return state;
     }

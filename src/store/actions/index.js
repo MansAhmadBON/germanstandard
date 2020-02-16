@@ -7,6 +7,10 @@ import addSelectValue from "./addSelectValue";
 import addSelectValueSinger from "./addSelectValueSinger";
 import addSelectValueGanre from "./addSelectValueGanre";
 import addSelectValueYEAR from "./addSelectValueYear";
+import sortBySinger from "./sortBySinger";
+import sortBySong from "./sortBySong";
+import sortByGanre from './sortByGanre';
+import sortByYear from "./sortByYear";
 
 
 
@@ -19,5 +23,9 @@ export {
     addSelectValue,
     addSelectValueSinger,
     addSelectValueGanre,
-    addSelectValueYEAR
+    addSelectValueYEAR,
+    sortBySinger,
+    sortBySong,
+    sortByGanre,
+    sortByYear
 };
