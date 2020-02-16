@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableCell({singer, song, ganre, year, id}) {
+function TableCell({singer, song, ganre, year}) {
     return (
         <>
             <td>{singer}</td>

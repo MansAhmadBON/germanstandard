@@ -107,7 +107,7 @@ function reducerAddPlayList(state = initialState, action) {
                 playlistShow: [...sortPlaylistByGanre]
             };
         case SORT_BY_YEAR:
-            const sortPlaylistByYear = state.playlistShow.sort((a, b) => a.year > b.year ? -1 : 1);
+            const sortPlaylistByYear = state.playlistShow.sort((a, b) => Number(a.year) > Number(b.year) ? -1 : 1);
             return {
                 ...state,
                 playlistShow: [...sortPlaylistByYear]

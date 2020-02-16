@@ -14,7 +14,6 @@ function TableRow({playlistForShow}) {
                                 song={item.song}
                                 ganre={item.ganre}
                                 year={item.year}
-                                id={item.id}
                             />
                         </tr>
                     )

@@ -22,7 +22,6 @@ class App extends Component{
     componentDidMount() {
         const playlist = playlistJSON.default;
         this.props.addPlayList(playlist);
-        //this.props.addTotalCountItems(playlist.length);
         this.props.addDataUniqueItems(playlist)
     }
 
