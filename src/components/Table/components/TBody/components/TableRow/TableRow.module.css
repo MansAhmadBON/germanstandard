@@ -1,6 +1,12 @@
-.tableRow {
+.tableRowEven {
     justify-content: space-around;
-    border-bottom: 1px solid #000;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.tableRowOdd {
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eeeeee;
 }

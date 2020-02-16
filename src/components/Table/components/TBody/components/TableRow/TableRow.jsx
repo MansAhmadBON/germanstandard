@@ -6,9 +6,9 @@ function TableRow({playlistForShow}) {
     return (
         <>
             {
-                playlistForShow.map(item => {
+                playlistForShow.map((item, i) => {
                     return (
-                        <tr key={item.id} className={styles.tableRow}>
+                        <tr key={item.id} className={(i % 2 === 0) ? styles.tableRowEven : styles.tableRowOdd}>
                             <TableCell
                                 singer={item.singer}
                                 song={item.song}
