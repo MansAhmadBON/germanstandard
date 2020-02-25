@@ -38,7 +38,6 @@ class App extends Component{
             pages.push(i)
         }
 
-
         return (
             <div className={styles.appBox}>
                 <main className={styles.mainConent}>
